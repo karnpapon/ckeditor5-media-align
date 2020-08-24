@@ -21,15 +21,15 @@ export default class MediaStyleEditing extends Plugin {
 
     const styles = normalizeMediaStyles(editor.config.get("mediaEmbed.styles"));
 
-    schema.extend("media", { allowAttributes: "mediaStyle" });
+    schema.extend("media", { allowAttributes: "mediastyle" });
 
     const modelToViewConverter = modelToViewStyleAttribute(styles);
     editing.downcastDispatcher.on(
-      "attribute:mediaStyle:media",
+      "attribute:mediastyle:media",
       modelToViewConverter
     );
     data.downcastDispatcher.on(
-      "attribute:mediaStyle:media",
+      "attribute:mediastyle:media",
       modelToViewConverter
     );
 
@@ -39,6 +39,6 @@ export default class MediaStyleEditing extends Plugin {
       { priority: "low" }
     );
 
-    editor.commands.add("mediaStyle", new MediaStyleCommand(editor, styles));
+    editor.commands.add("mediastyle", new MediaStyleCommand(editor, styles));
   }
 }

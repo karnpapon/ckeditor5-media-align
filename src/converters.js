@@ -33,7 +33,7 @@ export function viewToModelStyleAttribute(styles) {
     const viewFigureElement = data.viewItem;
     const modelMediaElement = first(data.modelRange.getItems());
 
-    if (!conversionApi.schema.checkAttribute(modelMediaElement, "mediaStyle")) {
+    if (!conversionApi.schema.checkAttribute(modelMediaElement, "mediastyle")) {
       return;
     }
 
@@ -44,7 +44,7 @@ export function viewToModelStyleAttribute(styles) {
         })
       ) {
         conversionApi.writer.setAttribute(
-          "mediaStyle",
+          "mediastyle",
           style.name,
           modelMediaElement
         );

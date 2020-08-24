@@ -20,8 +20,8 @@ export default class MediaStyleCommand extends Command {
 
     if (!element) {
       this.value = false;
-    } else if (element.hasAttribute("mediaStyle")) {
-      const attributeValue = element.getAttribute("mediaStyle");
+    } else if (element.hasAttribute("mediastyle")) {
+      const attributeValue = element.getAttribute("mediastyle");
       this.value = this.styles[attributeValue] ? attributeValue : false;
     } else {
       this.value = this.defaultStyle;
@@ -36,9 +36,9 @@ export default class MediaStyleCommand extends Command {
 
     model.change((writer) => {
       if (this.styles[styleName].isDefault) {
-        writer.removeAttribute("mediaStyle", mediaElement);
+        writer.removeAttribute("mediastyle", mediaElement);
       } else {
-        writer.setAttribute("mediaStyle", styleName, mediaElement);
+        writer.setAttribute("mediastyle", styleName, mediaElement);
       }
     });
   }

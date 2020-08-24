@@ -38,9 +38,9 @@ export default class MediaStyleUI extends Plugin {
   _createButton(style) {
     const editor = this.editor;
 
-    const componentName = `mediaStyle:${style.name}`;
+    const componentName = `mediastyle:${style.name}`;
     editor.ui.componentFactory.add(componentName, (locale) => {
-      const command = editor.commands.get("mediaStyle");
+      const command = editor.commands.get("mediastyle");
       const view = new ButtonView(locale);
 
       view.set({
@@ -54,7 +54,7 @@ export default class MediaStyleUI extends Plugin {
       view.bind("isOn").to(command, "value", (value) => value === style.name);
 
       this.listenTo(view, "execute", () => {
-        editor.execute("mediaStyle", { value: style.name });
+        editor.execute("mediastyle", { value: style.name });
         editor.editing.view.focus();
       });
 
