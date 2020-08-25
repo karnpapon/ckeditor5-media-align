@@ -7,9 +7,10 @@ export default class MediaStyleCommand extends Command {
     this.defaultStyle = false;
     this.styles = styles.reduce((styles, style) => {
       styles[style.name] = style;
-      if (style["isDefault"]) {
-        this.defaultStyle = style.name;
-      }
+      if ( style.isDefault ) {
+				this.defaultStyle = style.name;
+			}
+
       return styles;
     }, {});
   }
@@ -18,10 +19,13 @@ export default class MediaStyleCommand extends Command {
     const element = this.editor.model.document.selection.getSelectedElement();
     this.isEnabled = isMedia(element);
 
+    console.log("this.isEnable ---> ", this.isEnabled)
+
     if (!element) {
       this.value = false;
     } else if (element.hasAttribute("mediastyle")) {
       const attributeValue = element.getAttribute("mediastyle");
+      console.log("attributeValue --> ", attributeValue)
       this.value = this.styles[attributeValue] ? attributeValue : false;
     } else {
       this.value = this.defaultStyle;
